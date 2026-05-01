@@ -11,46 +11,65 @@ const services = [
     icon: Shield,
     title: "Cámaras de Seguridad",
     description:
-      "Sistemas de vigilancia IP y analógicos de última generación. Visión nocturna, acceso remoto desde el celular y alertas en tiempo real. Cubrimos perímetros completos sin puntos ciegos.",
-    features: ["Visión nocturna 4K", "Acceso remoto 24/7", "Grabación en la nube", "Detección de movimiento inteligente"],
-    tag: "Hogares & Empresas",
+      "Instalamos cámaras IP y analógicas para el interior y exterior del hogar o local. El sistema queda configurado para que puedas ver las cámaras desde el celular en tiempo real, en cualquier momento.",
+    features: [
+      "Cámaras IP y CCTV analógicas",
+      "Visualización remota desde el celular",
+      "Grabación local en DVR/NVR",
+      "Visión nocturna",
+      "Alertas de movimiento básicas",
+    ],
+    tag: "Hogares & Locales",
   },
   {
     icon: Satellite,
     title: "Starlink",
     description:
-      "Instalación y configuración profesional de antenas Starlink. Posicionamiento óptimo para máxima señal, cableado invisible y configuración de red avanzada para aprovechar al 100% la velocidad.",
-    features: ["Posicionamiento satelital óptimo", "Cableado oculto", "Router configurado", "Velocidades de hasta 300 Mbps"],
+      "Montaje e instalación de la antena en el lugar con mejor ángulo de cielo disponible, cableado prolijo hasta el router y configuración completa de la red. Listo para usar desde el primer día.",
+    features: [
+      "Montaje en techo o pared",
+      "Cableado ordenado en canaleta",
+      "Configuración del router incluida",
+      "Asesoramiento sobre el plan ideal",
+    ],
     tag: "Internet Satelital",
   },
   {
     icon: Wifi,
-    title: "Redes Domésticas",
+    title: "Redes Wi-Fi",
     description:
-      "Diseño e instalación de redes Wi-Fi de alto rendimiento para el hogar. Sin puntos muertos, cobertura total, routers mesh y configuración de parental controls y redes de invitados.",
-    features: ["Cobertura total sin puntos muertos", "Redes Mesh", "Configuración avanzada", "Soporte post-instalación"],
+      "Diseñamos y configuramos redes domésticas para que no queden zonas sin señal. Desde un router bien ubicado hasta un sistema de varios puntos de acceso para casas grandes.",
+    features: [
+      "Análisis de cobertura previa",
+      "Configuración de router y puntos de acceso",
+      "Red de invitados separada",
+      "Contraseñas y seguridad básica",
+    ],
     tag: "Hogares",
   },
   {
     icon: Building2,
-    title: "Infraestructura Empresarial",
+    title: "Infraestructura para PyMEs",
     description:
-      "Soluciones de red para PyMEs y oficinas. Cableado estructurado, switches gestionables, VLANs, VPNs y configuración de seguridad perimetral. Escalable según tu crecimiento.",
-    features: ["Cableado estructurado", "VLANs y segmentación", "VPN corporativa", "Mantenimiento preventivo"],
+      "Instalación de redes cableadas e inalámbricas para oficinas y locales comerciales. Cableado estructurado organizado, equipos bien configurados y todo etiquetado para fácil mantenimiento.",
+    features: [
+      "Cableado de red estructurado",
+      "Configuración de switches y routers",
+      "Separación de redes (empleados / clientes)",
+      "Trabajo prolijo y etiquetado",
+    ],
     tag: "PyMEs & Oficinas",
   },
 ];
 
 const containerVariants: Variants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.12 },
-  },
+  visible: { transition: { staggerChildren: 0.13 } },
 };
 
 const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 32 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
 };
 
 export default function Services() {
@@ -60,18 +79,18 @@ export default function Services() {
         {/* Header */}
         <motion.div
           className="max-w-2xl mb-16"
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 36 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           <span className="text-[#E8321F] text-sm font-semibold tracking-widest uppercase">Servicios</span>
           <h2 className="text-4xl lg:text-5xl font-bold text-white mt-3 mb-4 leading-tight">
-            Todo lo que necesitás, en un solo lugar.
+            Todo lo que necesitás,<br />en un solo lugar.
           </h2>
           <p className="text-[#71717A] text-lg leading-relaxed">
-            Desde la consulta inicial hasta la puesta en marcha. Instalamos, configuramos y
-            te acompañamos con soporte post-instalación.
+            Desde la consulta hasta la puesta en marcha. Instalamos, configuramos y dejamos
+            todo funcionando sin que tengas que preocuparte por nada.
           </p>
         </motion.div>
 
@@ -81,7 +100,7 @@ export default function Services() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           {services.map((service) => {
             const Icon = service.icon;
@@ -91,16 +110,15 @@ export default function Services() {
                 variants={cardVariants}
                 className="group relative bg-[#111115] border border-[#27272E] rounded-2xl p-8 hover:border-[#E8321F]/40 transition-all duration-300 overflow-hidden"
               >
-                {/* Hover glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#E8321F]/0 to-[#E8321F]/0 group-hover:from-[#E8321F]/5 group-hover:to-transparent transition-all duration-500 rounded-2xl pointer-events-none" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"
+                  style={{ background: "radial-gradient(circle at top left, rgba(232,50,31,0.06), transparent 60%)" }}
+                />
 
                 <div className="relative">
-                  {/* Tag */}
                   <span className="inline-block text-xs text-[#71717A] border border-[#27272E] rounded-full px-3 py-1 mb-4">
                     {service.tag}
                   </span>
 
-                  {/* Icon */}
                   <div className="w-12 h-12 bg-[#E8321F]/10 border border-[#E8321F]/20 rounded-xl flex items-center justify-center mb-5 group-hover:bg-[#E8321F]/20 transition-colors duration-300">
                     <Icon size={22} className="text-[#E8321F]" />
                   </div>
@@ -108,7 +126,6 @@ export default function Services() {
                   <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
                   <p className="text-[#71717A] text-sm leading-relaxed mb-6">{service.description}</p>
 
-                  {/* Features */}
                   <ul className="space-y-2 mb-7">
                     {service.features.map((f) => (
                       <li key={f} className="flex items-center gap-2.5 text-sm text-[#A1A1AA]">
